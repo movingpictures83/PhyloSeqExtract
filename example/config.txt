@@ -1,0 +1,2 @@
+Prefix plugins/PhyloSeqExtract/example
+Plugin PhyloSeqExtract inputfile parameters.txt outputfile output
