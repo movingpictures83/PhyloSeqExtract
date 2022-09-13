@@ -17,6 +17,7 @@ input <- function(inputfile) {
   tax_file <- paste(pfix, toString(parameters["TAX", 2]), sep="/")
   sample_file <- paste(pfix, toString(parameters["META", 2]), sep="/")
   filterF <<- toString(parameters["FILTER", 2])
+  column <<- toString(parameters["column", 2])
   p0 <<- read_csv2phyloseq(otu.file = otu_file, taxonomy.file = tax_file, metadata.file = sample_file, sep=",")
 }
 
@@ -26,8 +27,7 @@ run <- function() {
 output <- function(outputfile) {
 	#print(str(p0))
 	#print(sample_data(p0)@names["timepoint"])
-	print(typeof("pre"))
-	ps <- subset_samples(p0, sample_data(p0)[["timepoint"]] == filterF)
+	ps <- subset_samples(p0, sample_data(p0)[[column]] == filterF)
 	#ps <- subset_samples(p0, sample_data(p0)["timepoint"] == "pre")
 	#ps <- subset_samples(p0, ("timepoint") == "pre")
 
